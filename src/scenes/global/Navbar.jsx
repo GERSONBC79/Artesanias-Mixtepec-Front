@@ -46,9 +46,6 @@ const Navbar = () => {
                             <ShoppingBagOutlined />
                         </IconButton>
                     </Badge>
-                    <IconButton sx={{color: 'black'}}>
-                        <MenuOutlined />
-                    </IconButton>
                 </Box>
             </Box>
 

@@ -15,32 +15,32 @@ const Item = ({item, width}) => {
     const [isHover, setIsHover] = useState(false); //hover para el producto
     const {palette: {neutral}, } = useTheme();
     
-    const {category, price, name, image} = item.atributes; //atributos de la img jalados desde el back 
+  /*   const {category, price, name, image} = item.atributes; //atributos de la img jalados desde el back 
     const {
         data: {
             atributes: {
                 formats: {
-                    medium: { url },  /* forma de acceder a la url de la img jalado desde el back */
+                    medium: { url },  /* forma de acceder a la url de la img jalado desde el back 
                 }
 
             }
         }
-    } = image;
+    } = image; */
 
     return (
-        <Box width={width} >
+        <Box width={width}>
             <Box 
                 position='relative' 
                 onMouseOver={ () => setIsHover(true)}
                 onMouseOut={() => setIsHover(false)}
             >
                 <img 
-                    alt={item.name} 
+                    alt="img prueba"
                     width="300px"
                     height="400px"
                     /* src={`http://localhost:1337${url}`} */
-                    src='../assets/img1.jpeg'
-                    onClick={() => navigate(`/item/${item.id}`)} 
+                    src={require("../assets/img_prueba.jpg")}
+                    /* onClick={() => navigate(`/item/${item.id}`)}  */
                     style={{cursor: 'pointer'}}
                 />
                 <Box 
@@ -66,7 +66,7 @@ const Item = ({item, width}) => {
                             </IconButton>
 
                             <Typography color={shades.neutral[100]}>
-                                {count}        {/* Numero de productos */}
+                               {1}      {/* Numero de productos */}
                             </Typography>
 
                             <IconButton onClick={() => setCount(Math.max(count + 1))}> {/* aumenta la cantidad de un producto */}
@@ -74,7 +74,8 @@ const Item = ({item, width}) => {
                             </IconButton>
                         </Box>
 
-                        <Button sx={{backgroundColor: shades.primary[300], color: 'white'}}
+                        <Button sx={{backgroundColor: shades.primary[300], color: 'white',
+                                '&:hover': {backgroundColor: shades.primary[700]}}}
                             onClick={() => {dispatch(addToCart({item: {...item, count}}))}}> {/* aumenta el conteo del producto en el carrito */}
                             Agregar al carrito
                         </Button>
@@ -83,21 +84,18 @@ const Item = ({item, width}) => {
 
                 </Box>
             </Box>
-            <Box mt='3px'>
+            <Box mt='3px' textAlign="center">
                 <Typography variant="subTitle2" color={neutral.dark}>
-                    {/* {category
-                        .replace(/([A-Z])/g, "$1")   reemplaza las categprias jaladas desde el back, asi se accede   
-                        .replace(/^./, (str) => str.toUpperCase() )
-                    } */} 
-                    Categoria x
+                    {/* {category} */} 
+                    Categoría 
                 </Typography>
                 <Typography>
-                    {name}
-                    Nombre
+                    {/* {name} */}
+                    Jarron de barro
                 </Typography>
                 <Typography fontWeight='bold'>
-                    ${price}
-                    Precio MXN
+                   {/*  ${price} */}
+                     $199.00 MXN
                 </Typography>
             </Box>
         </Box>

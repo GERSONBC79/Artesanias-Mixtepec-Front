@@ -31,6 +31,7 @@ const MainCarousel = () => {
             autoPlay={true}
             interval={7000}
             verticalSwipe={'natural'}
+            dynamicHeight={false}
             renderArrowPrev={(onClickHandler, hasPrev, label) => (
                 <IconButton
                 onClick={onClickHandler}
@@ -77,7 +78,7 @@ const MainCarousel = () => {
                     } }
                 />
                     {/* contenedor del texto que esta dentro del carousel */}
-                    <Box color="white" padding="30px"  borderRadius="0px"
+                    <Box color="white" padding="30px"  borderRadius="8px"
                         textAlign="left" backgroundColor="rgba(0, 0, 0, 0.4)"
                         position="absolute" top="20%" 
                         left={inNonMobile ? "10%" : "0"}

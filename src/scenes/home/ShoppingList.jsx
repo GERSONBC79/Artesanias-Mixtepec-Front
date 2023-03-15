@@ -17,22 +17,44 @@ const ShoppingList = () => {
         setValue(newValue);
     };
 
-    async function getItems() {
+   /*  async function getItems() {
         const items = await fetch(
-            "http://localhost:1337/api/items?populate=image", /* toma las los productos con las imagenes  */
+            "http://localhost:1337/api/items?populate=image", 
             { method: "GET" }
         );
         const itemsJson = await items.json();
         disptach( getItems(itemsJson.data))
-    }
+    } */
 
-    useEffect(() => {
+  /*   useEffect(() => {
         getItems();
 
-    }, [])
+    }, []) */
+
 
     return (
-        <div>Shopping</div>
+        <Box width="80%" margin="80px auto">
+            <Typography variant="h3" textAlign="center" marginBottom="10px">
+                Nuestros productos 
+            </Typography>
+
+            <Box 
+                margin="0 auto" display="grid"
+                gridTemplateColumns="repeat(auto-fill, 280px)"
+                justifyContent="space-around" rowGap="35px"
+                columnGap="2%"
+            >
+                <Item ></Item>
+                <Item ></Item>
+                <Item ></Item>
+                <Item ></Item>
+                <Item ></Item>
+                <Item ></Item>
+                <Item ></Item>
+                <Item ></Item>
+            </Box>
+        </Box>
+
     )
 }
 

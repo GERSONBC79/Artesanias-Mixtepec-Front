@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home">
       <MainCarousel />
-     {/*  <ShoppingList /> */}
+      <ShoppingList />
     </div>
   )
 }
