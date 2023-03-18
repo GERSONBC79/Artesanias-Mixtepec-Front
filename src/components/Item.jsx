@@ -76,7 +76,7 @@ const Item = ({item, width}) => {
 
                         <Button sx={{backgroundColor: shades.primary[300], color: 'white',
                                 '&:hover': {backgroundColor: shades.primary[700]}}}
-                            onClick={() => {dispatch(addToCart({item: {...item, count}}))}}> {/* aumenta el conteo del producto en el carrito */}
+                            /* onClick={() => {dispatch(addToCart({item: {...item, count}}))}} */ > {/* aumenta el conteo del producto en el carrito */}
                             Agregar al carrito
                         </Button>
 

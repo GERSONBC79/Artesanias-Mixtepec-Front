@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Box, IconButton, Container } from "@mui/material";
-import { PersonOutline, ShoppingBagOutlined, MenuOutlined,SearchOutlined } from "@mui/icons-material";
+import { PersonOutline, ShoppingBagOutlined,SearchOutlined } from "@mui/icons-material";
 import { Navigate, useNavigate } from "react-router-dom";
 import { shades } from "../../Theme";
 import { setIsCartOpen } from "../../state";
@@ -17,16 +17,18 @@ const Navbar = () => {
             position='fixed' top='0' left='0' zIndex='1'>
             
             <Box width='80%' margin='auto' display='flex' justifyContent='space-between'>
-                <Box onClick={() => navigate("/")} sx={{ '&:hover': {cursor: '´pointer'}}} 
+                <Box onClick={() => navigate("/")} sx={{ '&:hover': {cursor: 'pointer'}}} 
                     fontSize='18px' color={shades.secondary[500]} marginTop='6px' letterSpacing='4px'>
-                        ARTESANÍAS MIXTEPEC
+                        <img width='250px' src={require("../../assets/logo/logo.png")} alt='Artesanias mixtepec' />
                 </Box>
                 <Box display='flex' justifyContent='space-between' 
                     columnGap='20px' zIndex='2'>
                     <IconButton sx={{color: 'black'}}>
                         <SearchOutlined />
                     </IconButton>
-                    <IconButton sx={{color: 'black'}}>
+                    <IconButton sx={{color: 'black'}} 
+                        onClick={() => navigate("/cuenta")}
+                    >
                         <PersonOutline />
                     </IconButton>
 
