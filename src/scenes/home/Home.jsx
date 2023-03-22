@@ -1,3 +1,4 @@
+import Footer from "../global/Footer.jsx";
 import MainCarousel from "./MainCarousel.jsx"
 import ShoppingList from "./ShoppingList.jsx"
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div className="home">
       <MainCarousel />
       <ShoppingList />
+      <Footer />
     </div>
   )
 }

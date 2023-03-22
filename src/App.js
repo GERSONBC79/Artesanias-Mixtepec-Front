@@ -8,8 +8,7 @@ import Login from "./scenes/Auth/Login";
 import Checkout from "./scenes/checkout/Checkout";
 import Confirmation from "./scenes/checkout/Confirmation";
 import CartMenu from "./scenes/global/CartMenu";
-import WithNav from "./scenes/global/WithNav";
-import WithoutNav from "./scenes/global/WithoutNav";
+import Navbar from "./scenes/global/Navbar";
 import Home from "./scenes/home/Home";
 import ItemDetails from "./scenes/ItemDetails/ItemDetails";
 
@@ -29,17 +28,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <ScrollToTop />
+        <Navbar />
         <Routes>
-        <Route element={<WithoutNav />}>
-            <Route  path="/cuenta" element={<Login />} />
-          </Route>
-
-          <Route element={<WithNav />} >
-            <Route path="/" element={<Home />} />
-            <Route path="item/:itemId" element={<ItemDetails />} />
-            <Route path="pago" element={<Checkout />} />
-            <Route path="pago/confirmado" element={<Confirmation />} />
-          </Route> 
+          <Route  path="/cuenta" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="item/:itemId" element={<ItemDetails />} />
+          <Route path="pago" element={<Checkout />} />
+          <Route path="pago/confirmado" element={<Confirmation />} />
+           
         </Routes>
         <CartMenu />
       </BrowserRouter>

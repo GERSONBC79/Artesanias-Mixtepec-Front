@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Badge, Box, IconButton, Container } from "@mui/material";
+import { Badge, Box, IconButton, Container, Typography } from "@mui/material";
 import { PersonOutline, ShoppingBagOutlined,SearchOutlined } from "@mui/icons-material";
 import { Navigate, useNavigate } from "react-router-dom";
 import { shades } from "../../Theme";
@@ -24,12 +24,14 @@ const Navbar = () => {
                 <Box display='flex' justifyContent='space-between' 
                     columnGap='20px' zIndex='2'>
                     <IconButton sx={{color: 'black'}}>
-                        <SearchOutlined />
+                        <SearchOutlined /> 
+                        <Typography variant="body1" sx={{fontWeight: 'bold'}}> Buscar</Typography> 
                     </IconButton>
                     <IconButton sx={{color: 'black'}} 
                         onClick={() => navigate("/cuenta")}
                     >
-                        <PersonOutline />
+                        <PersonOutline /> 
+                        <Typography variant="body1" sx={{fontWeight: 'bold'}}> Cuenta </Typography>
                     </IconButton>
 
                     <Badge badgeContent={cart.lenth} color="secondary"
@@ -46,6 +48,7 @@ const Navbar = () => {
                         <IconButton sx={{color: 'black'}} 
                         onClick={ () => dispatch(setIsCartOpen({}))}>
                             <ShoppingBagOutlined />
+                            <Typography variant="body1" sx={{fontWeight: 'bold'}}> Carrito </Typography>
                         </IconButton>
                     </Badge>
                 </Box>

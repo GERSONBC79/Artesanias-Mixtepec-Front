@@ -22,16 +22,15 @@ const MainCarousel = () => {
 
     return (
         <Carousel
-            sx={{top: "10px"}}
             infiniteLoop={true}
             showThumbs={false}
-            showIndicators={false}
             showStatus={false}
             transitionTime={2000}
             autoPlay={true}
             interval={7000}
             verticalSwipe={'natural'}
             dynamicHeight={false}
+            showIndicators={true}
             renderArrowPrev={(onClickHandler, hasPrev, label) => (
                 <IconButton
                 onClick={onClickHandler}
@@ -74,7 +73,8 @@ const MainCarousel = () => {
                         width: "100%",
                         height: "700px",
                         objectFit: "cover",
-                        backgroundAttachment: "fixed"
+                        backgroundAttachment: "fixed",
+                        marginTop: '60px'
                     } }
                 />
                     {/* contenedor del texto que esta dentro del carousel */}
