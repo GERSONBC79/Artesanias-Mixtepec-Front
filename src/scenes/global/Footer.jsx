@@ -36,6 +36,7 @@ const Footer = () => {
               : theme.palette.grey[800],
         }}
       >
+        <CssBaseline />
         <Box  display='flex' flexDirection='column' mt={3} mb={2}>
           <Typography variant='h3' fontWeight='bold' textAlign='center' >NEWSLETTER</Typography>
           <Box display='flex' flexDirection='row' component='form' autoComplete='off' justifyContent='center' padding={3} gap={3} flexWrap='wrap'>
