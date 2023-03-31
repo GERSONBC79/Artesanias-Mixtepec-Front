@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import {  useFormik } from 'formik';
 
 import * as Yup from "yup"
+import Footer from '../global/Footer';
 
 
 const Login = () => {
@@ -55,7 +56,7 @@ const Login = () => {
                 
                 <Box display='flex' flexDirection='column'height='100vh' >
                     <Box maxHeight="850px"  borderRadius={2} padding="15px" width="350px" 
-                        maxWidth="350px" margin="90px auto"   sx={{backgroundColor: "white" }}> 
+                        maxWidth="350px" margin="80px auto"   sx={{backgroundColor: "white" }}> 
                     <Typography mt={2} fontWeight='bold'  variant='h3'color={shades.secondary[500]} textAlign="center">
                         {Loggeado ? "Crear cuenta" : "Iniciar sesión"}</Typography>
                     <form  onSubmit={handleSubmit}>
@@ -225,6 +226,7 @@ const Login = () => {
                     </Box>
                 </Box>
                
+               <Footer />
             </Box>
   )
 }

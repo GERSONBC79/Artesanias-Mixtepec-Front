@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Badge, Box, IconButton, Container, Typography, Drawer, CssBaseline, AppBar, Toolbar } from "@mui/material";
-import { PersonOutline, ShoppingBagOutlined,SearchOutlined, MenuRounded } from "@mui/icons-material";
+import { Badge, Box, IconButton, Typography, Drawer, CssBaseline, AppBar, Toolbar } from "@mui/material";
+import { PersonOutline, ShoppingBagOutlined,SearchOutlined, MenuRounded, HomeOutlined, EmailOutlined } from "@mui/icons-material";
 import {  useNavigate } from "react-router-dom";
 import { setIsCartOpen } from "../../state";
 import { useState } from "react";
@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
       <Box display='flex' >
         <CssBaseline />
-        <AppBar component='nav' position="fixed" sx={{backgroundColor: 'white'}}>
+        <AppBar component='nav' position="fixed" sx={{backgroundColor: 'white', zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Toolbar>
                 <Box sx={{ '&:hover': {cursor: 'pointer'}, flexGrow: 1}} 
                     >
@@ -26,7 +26,15 @@ const Navbar = () => {
                 
                 <Box display='flex' justifyContent='space-between' 
                     columnGap='20px' zIndex='2'>
-                        <Box sx={{ display: {xs: 'none', sm: 'block'} }}>
+                        <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block'} }}>
+
+                            <IconButton sx={{color: 'black'}} onClick={() => navigate("/")}>
+                                <HomeOutlined />
+                                <Typography variant="body1" sx={{fontWeight: 'bold'}}> Home</Typography> 
+                            </IconButton>
+
+                            
+
                             <IconButton sx={{color: 'black'}}>
                                 <SearchOutlined /> 
                                 <Typography variant="body1" sx={{fontWeight: 'bold'}}> Buscar</Typography> 
@@ -37,6 +45,11 @@ const Navbar = () => {
                             >
                                 <PersonOutline /> 
                                 <Typography variant="body1" sx={{fontWeight: 'bold'}}> Cuenta </Typography>
+                            </IconButton>
+
+                            <IconButton sx={{color: 'black'}} onClick={() => navigate("/contacto")}>
+                                <EmailOutlined />
+                                <Typography variant="body1" sx={{fontWeight: 'bold'}}> Contacto</Typography> 
                             </IconButton>
 
                             <Badge badgeContent={cart.lenth} color="secondary"
@@ -58,7 +71,7 @@ const Navbar = () => {
                             </Badge>
                         </Box>
                     
-                        <Box sx={{ display: {xs: 'block', sm: 'none'} }} >
+                        <Box sx={{ display: {xs: 'block', sm: 'block', md: 'none'} }} >
                             <IconButton sx={{color: 'black'}} 
                                 onClick={() => setOpen(true)}  >
                                 <MenuRounded />
@@ -66,7 +79,7 @@ const Navbar = () => {
                             </IconButton>
                                 
                             <Drawer open={open} anchor="right"  variant="temporary"
-                                onClose={() => setOpen(false)} sx={{ display: {xs: 'block', sm: 'none'} }}
+                                onClose={() => setOpen(false)} sx={{ display: {xs: 'block', sm: 'block', md: 'none'} }}
                                 ModalProps={{
                                     keepMounted: true, // Better open performance on mobile.
                                   }}>
