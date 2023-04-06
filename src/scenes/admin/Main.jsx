@@ -1,9 +1,13 @@
-import {  Add, CloseOutlined, MenuOutlined } from '@mui/icons-material'
+import {  Add, MenuOutlined } from '@mui/icons-material'
 import { AppBar, Box, CssBaseline, Toolbar, Drawer as Dw, Typography, IconButton, Modal } from '@mui/material'
 import React, { useState } from 'react'
 import { Drawer } from './Drawer'
 import { FormUser } from './Forms/FormUser'
-import { Users } from './Users'
+import { Users } from './Panels/Users'
+import { Products } from './Panels/Products'
+import { Category } from './Panels/Category'
+import { FormProduct } from './Forms/FormProduct'
+import { FormCategory } from './Forms/FormCategory'
 
 export const Main = (props) => {
 
@@ -21,6 +25,12 @@ export const Main = (props) => {
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
+    const [panel, setPanel] = useState("usuarios");
+    const setPanelPrincipal = () => setPanel("principal")
+    const setPanelUsuarios = () => setPanel("usuarios")
+    const setPanelProductos = () => setPanel("productos")
+    const setPanelCategorias = () => setPanel("categorias")
+
   return (
     <div >
         <Box sx={{dispplay: 'flex'}}  >
@@ -34,8 +44,9 @@ export const Main = (props) => {
                     <Typography ml={1} variant='h6' fontWeight='bold' noWrap component='div'>
                         Panel de administración 
                     </Typography>
-                    <IconButton onClick={handleOpenModal} sx={{left:{ xs: '40%', sm: '40%' , md: '65%', lg: '75%'} }}>
-                        <Add />
+                    <IconButton onClick={handleOpenModal} sx={{left:{ xs: '35%', sm: '26%' , md: '60%', lg: '73%'} }}>
+                        <Add  />
+                        <Typography variant='body1' fontWeight='bold'>Agregar</Typography>
                     </IconButton>
                     
                 </Toolbar>
@@ -47,26 +58,30 @@ export const Main = (props) => {
                     sx={{display: { xs: 'block', sm: 'none' },
                     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }}}
                 >
-                    <Drawer/>
+                    <Drawer setPanelPrincipal={setPanelPrincipal} setPanelUsuarios={setPanelUsuarios} 
+                            setPanelProductos={setPanelProductos} setPanelCategorias={setPanelCategorias}/>
                 </Dw> {/* drawer para moviles */}
 
                 <Dw variant='permanent' sx={{ display: { xs: 'none', sm: 'block' },
                     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                 }} open
                      >
-                    <Drawer />
+                    <Drawer setPanelPrincipal={setPanelPrincipal} setPanelUsuarios={setPanelUsuarios} 
+                            setPanelProductos={setPanelProductos} setPanelCategorias={setPanelCategorias} />
                 </Dw>
 
             </Box>
                 <Box component='main' sx={{ p: 1, ml: {xs: '25px', sm: '250px'}, width: { xs: '100%', sm: '65%', md: '80%', lg: '80%'}}}>
                     <Toolbar />
-                    <Users />
+                    {panel === 'usuarios' && <Users />}
+                    {panel === 'productos' && <Products />}
+                    {panel === 'categorias' && <Category />}
                     <Modal open={openModal} onClose={handleCloseModal}>
                        <>
-                       {/* <IconButton  onClick={handleCloseModal} size='large' sx={{zIndex: 2, left: {xs: '72%', sm:'82%', md: '35%', lg: '63%'}, top: '15%'}} >
-                            <CloseOutlined  color='warning'/>
-                        </IconButton> */}
-                        <FormUser />
+                       
+                        {panel === 'usuarios' && <FormUser handleCloseModal={handleCloseModal} />}
+                        {panel === 'productos' && <FormProduct handleCloseModal={handleCloseModal} />}
+                        {panel === 'categorias' && <FormCategory handleCloseModal={handleCloseModal} />}
                        </>
                     </Modal>
                 </Box>

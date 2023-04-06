@@ -11,7 +11,7 @@ export const Drawer = (props) => {
         <Divider />
         <List>
             <ListItem >
-                <ListItemButton>
+                <ListItemButton onClick={() => props.setPanelPrincipal()}>
                     <ListItemIcon>
                        <GridViewOutlined /> 
                     </ListItemIcon>
@@ -21,7 +21,7 @@ export const Drawer = (props) => {
 
 
             <ListItem>
-                <ListItemButton>
+                <ListItemButton onClick={() => props.setPanelUsuarios()}>
                     <ListItemIcon>
                        <Person/> 
                     </ListItemIcon>
@@ -30,7 +30,7 @@ export const Drawer = (props) => {
             </ListItem>
 
             <ListItem>
-                <ListItemButton>
+                <ListItemButton onClick={() => props.setPanelProductos()}>
                     <ListItemIcon>
                        <FormatListNumbered /> 
                     </ListItemIcon>
@@ -39,7 +39,7 @@ export const Drawer = (props) => {
             </ListItem>
 
             <ListItem >
-                <ListItemButton>
+                <ListItemButton onClick={() => props.setPanelCategorias()}>
                     <ListItemIcon>
                        <Category /> 
                     </ListItemIcon>

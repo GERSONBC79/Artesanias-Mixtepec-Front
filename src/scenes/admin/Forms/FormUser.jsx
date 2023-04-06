@@ -6,7 +6,7 @@ import React from 'react'
 import * as Yup from "yup"
 import { shades } from '../../../Theme';
 
-export const FormUser = () => {
+export const FormUser = (props) => {
 
     const {handleChange, handleSubmit, values, errors, touched, handleBlur} = useFormik({
         initialValues: {
@@ -33,8 +33,8 @@ export const FormUser = () => {
     const style = {
         position: 'absolute',
         top: '15%',
-        left: {xs: '10%', sm:'28%', md: '35%', lg: '40%'},
-        width: 400,
+        left: {xs: '6%', sm:'10%', md: '25%', lg: '32%'},
+        width: {xs: 450, sm: 550, md: 600},
         maxHeight: "850px",
         bgcolor: 'background.paper',
         border: '2px solid #000',
@@ -44,19 +44,21 @@ export const FormUser = () => {
 
   return (
     <Box sx={style}>
+        <IconButton  onClick={() => props.handleCloseModal() } size='large' sx={{float: 'right', top: '-25px', padding: '0 0', left: '20px'}} >
+            <CloseOutlined  color='warning'/>
+        </IconButton>
         <Typography variant='h5' textAlign='center'> Agregar un nuevo usuario </Typography>
-
         
         
          <form  onSubmit={handleSubmit}>
-        <Grid mt={3} container display='flex' flexDirection='column' gap={'10px'} alignItems='center'>
-                            <Grid item>
+        <Grid mt={3} container spacing={3} alignItems='center'>
+                            <Grid item xs={12} sm={12} md={6}>
 
                                 <TextField
                                     required
                                     type='text'
                                     label="Nombre completo"
-                                    sx={{width:'250px'}}
+                                    fullWidth
                                     name='nombre'
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -65,13 +67,28 @@ export const FormUser = () => {
                                     helperText={touched.nombre ? errors.nombre : ""}
                                 />
                                 </Grid>
-                            <Grid item>
+                                <Grid item  xs={12} sm={12} md={6}>
+
+                                    <TextField
+                                        required
+                                        type='tel'
+                                        label="Número telefónico"
+                                        fullWidth
+                                        name='numero'
+                                        onBlur={handleBlur}
+                                        value={values.numero}
+                                        onChange={handleChange}
+                                        error={touched.numero && Boolean(errors.numero)}
+                                        helperText={touched.numero ? errors.numero : ""}
+                                        />
+                                </Grid>
+                            <Grid item  xs={12} sm={12} md={12}>
 
                                 <TextField
                                     required
                                     type='text'
                                     label="Dirección"
-                                    sx={{width:'250px'}}
+                                    fullWidth
                                     name='direccion'
                                     onBlur={handleBlur}
                                     value={values.direccion}
@@ -81,30 +98,15 @@ export const FormUser = () => {
                                     />
                             </Grid>
 
-                            <Grid item>
-
-                                <TextField
-                                    required
-                                    type='tel'
-                                    label="Número telefónco"
-                                    sx={{width:'250px'}}
-                                    name='numero'
-                                    onBlur={handleBlur}
-                                    value={values.numero}
-                                    onChange={handleChange}
-                                    error={touched.numero && Boolean(errors.numero)}
-                                    helperText={touched.numero ? errors.numero : ""}
-                                    />
-                            </Grid>
                             
 
-                            <Grid item>
+                            <Grid item  xs={12} sm={12} md={12}>
 
                                 <TextField
                                     required
                                     type='email'
                                     label="Correo electrónico"
-                                    sx={{width:'250px'}}
+                                    fullWidth
                                     name='correo_registro'
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -113,12 +115,12 @@ export const FormUser = () => {
                                     helperText={touched.correo_registro ? errors.correo_registro : ""}
                                     />
                             </Grid>
-                            <Grid item>
+                            <Grid item  xs={12} sm={12} md={6}>
                                 <TextField
                                     required
                                     label="Contraseña"
                                     type="password"
-                                    sx={{width:'250px'}}
+                                    fullWidth
                                     name='contrasena_registro'
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -128,12 +130,12 @@ export const FormUser = () => {
                                     />
                             </Grid>
 
-                            <Grid item>
+                            <Grid item  xs={12} sm={12} md={6}>
                                 <TextField
                                     required
                                     label="Confirmar contraseña"
                                     type="password"
-                                    sx={{width:'250px'}}
+                                    fullWidth
                                     name='contrasena_registro_confirm'
                                     onChange={handleChange}
                                     onBlur={handleBlur}

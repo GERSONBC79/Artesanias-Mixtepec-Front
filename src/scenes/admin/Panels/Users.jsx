@@ -3,18 +3,17 @@ import { Box } from '@mui/system'
 import { DataGrid } from '@mui/x-data-grid'
 import React, { useMemo } from 'react'
 import { useState } from 'react'
+import { UserActions } from './UserActions'
 
 export const Users = () => {
 
-
-    const [pageSize, setPageSize] = useState(6);
     const columns =  useMemo( () => [ 
         {field: 'id', headerName: 'Id', width: 50, },
         {field: 'name', headerName: 'Nombre', width: 230, editable: true},
         {field: 'direccion', headerName: 'Direccion', width: 250},
         {field: 'telefono', headerName: 'Telefono',type: 'number',  width: 120},
         {field: 'correo', headerName: 'Correo', width: 200},
-        {field: 'acciones', headerName: 'Acciones', width: 100},
+        {field: 'acciones', headerName: 'Acciones', width: 100,  renderCell: () => <UserActions />},
 
     ], []);
 
